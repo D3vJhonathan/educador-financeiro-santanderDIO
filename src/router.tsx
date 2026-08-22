@@ -1,4 +1,6 @@
+import { PiggyBank } from 'lucide-react'
 import { createBrowserRouter } from 'react-router-dom'
+import { Button } from './components/shared/button'
 
 export const router = createBrowserRouter([
   {
