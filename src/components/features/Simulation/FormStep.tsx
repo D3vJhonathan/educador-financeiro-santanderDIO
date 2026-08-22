@@ -1,8 +1,9 @@
 import { ArrowLeft, ArrowRight, type LucideIcon } from 'lucide-react'
-import { type SyntheticEvent,useState } from 'react'
+import { type SyntheticEvent, useState } from 'react'
 
 import { Button } from '@/components/shared/Button'
 import { Input, type InputProps } from '@/components/shared/Input'
+import { formatCurrencyMask } from '@/utils/currency'
 
 export interface FormStepProps {
   id: string
@@ -53,19 +54,24 @@ export function FormStep({
         {question}
       </h3>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <Input {...inputProps} value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        <Input
+          {...inputProps}
+          value={inputValue}
+          onChange={(e) => setInputValue(inputProps.prefix === 'R$' ? formatCurrencyMask(e.target.value) : e.target.value)}
+        />
+
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
           {!hideBackButton && (
             <Button
-            type="button"
-            onClick={onBack}
-            variant="ghost"
-            icon={ArrowLeft}
-            className="order-2 flex-1 justify-center rounded-xl py-3 sm:order-1"
-          >
-            Voltar
-          </Button>
-        )}
+              type="button"
+              onClick={onBack}
+              variant="ghost"
+              icon={ArrowLeft}
+              className="order-2 flex-1 justify-center rounded-xl py-3 sm:order-1"
+            >
+              Voltar
+            </Button>
+          )}
           <Button
             type="submit"
             variant="primary"
