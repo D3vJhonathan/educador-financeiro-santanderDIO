@@ -1,5 +1,6 @@
 import { SimulationHero } from '@/components/features/Simulation/Hero'
-import { SimulationForm } from '../components/features/Simulation/Form'
+
+import { SimulationForm } from '../components/features/Simulation/Form.tsx'
 
 export function SimulationFormPage() {
   return (
